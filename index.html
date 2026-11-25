@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, serif;
+  background: #fff8f0;
+  color: #5b302b;
+  text-align: center;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg,#fff1df,#f6d6c5);
+}
+
+.small {
+  letter-spacing: 5px;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: 48px;
+  color: #963f36;
+  margin: 15px 0;
+}
+
+.heart {
+  font-size: 35px;
+  color: #c58a54;
+  margin: 15px;
+}
+
+.invite {
+  font-size: 18px;
+  line-height: 1.8;
+  margin: 20px 0;
+}
+
+.date {
+  border-top: 1px solid #b77b62;
+  border-bottom: 1px solid #b77b62;
+  padding: 18px 30px;
+  margin: 25px 0;
+  font-size: 20px;
+}
+
+button {
+  background: #963f36;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.details {
+  padding: 50px 20px;
+}
+
+.details h2 {
+  color: #963f36;
+  margin-bottom: 20px;
+}
+
+footer {
+  padding: 25px;
+  background: #963f36;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<p class="small">THE WEDDING INVITATION</p>
+
+<p>With the blessings of our families</p>
+
+<h1>Rahul</h1>
+
+<div class="heart">♥</div>
+
+<h1>Manu</h1>
+
+<p class="invite">
+Together with our families,<br>
+we invite you to celebrate<br>
+our special day.
+</p>
+
+<div class="date">
+SAVE THE DATE<br>
+25 December 2026
+</div>
+
+<p>We would love to have you with us!</p>
+
+<br>
+
+<button onclick="document.getElementById('details').scrollIntoView({behavior:'smooth'})">
+View Invitation
+</button>
+
+</section>
+
+<section class="details" id="details">
+
+<h2>Wedding Celebration</h2>
+
+<p>
+Your presence will make our celebration<br>
+even more special.
+</p>
+
+<br>
+
+<h2>Wedding Date</h2>
+
+<p>25 December 2026</p>
+
+<br>
+
+<h2>Venue</h2>
+
+<p>Wedding Venue Address Here</p>
+
+</section>
+
+<footer>
+Made with ♥ for our special day
+</footer>
+
+</body>
+</html>
