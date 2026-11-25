@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wedding Invitation</title>
+<title>Rahul & Manu | Wedding Invitation</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -13,142 +15,353 @@
 }
 
 body {
-  font-family: Georgia, serif;
-  background: #fff8f0;
-  color: #5b302b;
+  background: #160c0b;
+  color: #f8e8c5;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
 }
 
 .hero {
   min-height: 100vh;
+  padding: 65px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 30px 20px;
-  background: linear-gradient(135deg,#fff1df,#f6d6c5);
+  justify-content: center;
+  background:
+  radial-gradient(circle at center,#57251e,#160c0b 75%);
+  position: relative;
+  overflow: hidden;
 }
 
-.small {
-  letter-spacing: 5px;
-  font-size: 13px;
-  margin-bottom: 25px;
+.hero:before {
+  content: "";
+  position: absolute;
+  inset: 15px;
+  border: 1px solid #c9a45b;
+  pointer-events: none;
+}
+
+.top {
+  color: #d9b76b;
+  letter-spacing: 6px;
+  font-size: 11px;
+  margin-bottom: 35px;
 }
 
 h1 {
-  font-size: 48px;
-  color: #963f36;
-  margin: 15px 0;
+  font-family: 'Playfair Display',serif;
+  font-size: clamp(55px,12vw,85px);
+  font-weight: 500;
+  color: #f5d99a;
+  text-shadow: 0 0 25px #bd864b55;
 }
 
-.heart {
-  font-size: 35px;
-  color: #c58a54;
-  margin: 15px;
+.amp {
+  font-family: 'Playfair Display',serif;
+  color: #d9a85b;
+  font-size: 55px;
+  margin: 5px;
 }
 
-.invite {
-  font-size: 18px;
+.subtitle {
+  font-family: 'Playfair Display',serif;
+  font-size: 20px;
   line-height: 1.8;
-  margin: 20px 0;
+  margin: 30px 0;
+  color: #e8d6b7;
+}
+
+.gold-line {
+  width: 180px;
+  height: 1px;
+  background: #c9a45b;
+  margin: 25px auto;
 }
 
 .date {
-  border-top: 1px solid #b77b62;
-  border-bottom: 1px solid #b77b62;
-  padding: 18px 30px;
-  margin: 25px 0;
-  font-size: 20px;
+  font-family: 'Playfair Display',serif;
+  font-size: 25px;
+  color: #f5d99a;
+  line-height: 1.8;
 }
 
-button {
-  background: #963f36;
-  color: white;
+.label {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #d5ae68;
+}
+
+section {
+  padding: 75px 20px;
+}
+
+h2 {
+  font-family: 'Playfair Display',serif;
+  font-size: 35px;
+  color: #e9c77d;
+  margin-bottom: 25px;
+}
+
+.card {
+  max-width: 450px;
+  margin: 25px auto;
+  padding: 35px 20px;
+  border: 1px solid #947044;
+  background: #261513;
+  border-radius: 4px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.time {
+  border: 1px solid #b18b4c;
+  padding: 15px 12px;
+  min-width: 70px;
+}
+
+.time strong {
+  display: block;
+  font-size: 27px;
+  color: #f5d99a;
+}
+
+.time span {
+  font-size: 10px;
+  color: #d5ae68;
+}
+
+p {
+  line-height: 1.9;
+  color: #e4d3b9;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 28px;
+  background: linear-gradient(135deg,#e8c77e,#a87938);
+  color: #28130f;
+  text-decoration: none;
   border: none;
-  padding: 15px 30px;
   border-radius: 30px;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 12px 5px;
   cursor: pointer;
 }
 
-.details {
-  padding: 50px 20px;
-}
-
-.details h2 {
-  color: #963f36;
-  margin-bottom: 20px;
-}
-
 footer {
-  padding: 25px;
-  background: #963f36;
-  color: white;
+  padding: 35px 15px;
+  background: #0c0707;
+  color: #c9a45b;
+  font-size: 13px;
+}
+
+.reveal {
+  animation: appear 1.5s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
+<div class="hero reveal">
 
-<p class="small">THE WEDDING INVITATION</p>
+<div class="top">THE ROYAL WEDDING</div>
 
 <p>With the blessings of our families</p>
 
+<div style="margin-top:30px">
 <h1>Rahul</h1>
-
-<div class="heart">♥</div>
-
+<div class="amp">&</div>
 <h1>Manu</h1>
-
-<p class="invite">
-Together with our families,<br>
-we invite you to celebrate<br>
-our special day.
-</p>
-
-<div class="date">
-SAVE THE DATE<br>
-25 December 2026
 </div>
 
-<p>We would love to have you with us!</p>
+<div class="gold-line"></div>
+
+<p class="subtitle">
+Two hearts, one beautiful journey.<br>
+Together forever begins here.
+</p>
+
+<div class="label">SAVE THE DATE</div>
+
+<div class="date">
+30 DECEMBER 2026
+</div>
+
+<div class="gold-line"></div>
+
+<p>Kanpur, Uttar Pradesh</p>
+
+<a href="#invitation" class="btn">EXPLORE INVITATION ↓</a>
+
+</div>
+
+<section id="invitation">
+
+<div class="label">A BEAUTIFUL BEGINNING</div>
+
+<h2>You Are Invited</h2>
+
+<div class="card">
+<p>
+Together with our beloved families,<br>
+we request the pleasure of your company<br>
+as we celebrate our wedding.
+</p>
+<br>
+<h2>Rahul & Manu</h2>
+<p>30 December 2026</p>
+</div>
+
+</section>
+
+<section>
+
+<div class="label">COUNTDOWN TO FOREVER</div>
+
+<h2>Wedding Countdown</h2>
+
+<div class="countdown">
+
+<div class="time">
+<strong id="days">00</strong>
+<span>DAYS</span>
+</div>
+
+<div class="time">
+<strong id="hours">00</strong>
+<span>HOURS</span>
+</div>
+
+<div class="time">
+<strong id="minutes">00</strong>
+<span>MINUTES</span>
+</div>
+
+<div class="time">
+<strong id="seconds">00</strong>
+<span>SECONDS</span>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="label">CELEBRATION</div>
+
+<h2>Wedding Location</h2>
+
+<div class="card">
+<h2>Kanpur</h2>
+<p>Uttar Pradesh, India</p>
+<br>
+<p>We look forward to celebrating<br>this beautiful occasion with you.</p>
+<br>
+
+<a class="btn"
+href="https://www.google.com/maps/search/?api=1&query=Kanpur+Uttar+Pradesh"
+target="_blank">
+VIEW ON GOOGLE MAPS
+</a>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="label">SHARE THE HAPPINESS</div>
+
+<h2>Spread The Love</h2>
+
+<p>Share our special invitation with your loved ones.</p>
 
 <br>
 
-<button onclick="document.getElementById('details').scrollIntoView({behavior:'smooth'})">
-View Invitation
+<button class="btn" onclick="shareInvitation()">
+SHARE INVITATION ❤️
 </button>
 
 </section>
 
-<section class="details" id="details">
-
-<h2>Wedding Celebration</h2>
-
-<p>
-Your presence will make our celebration<br>
-even more special.
-</p>
-
-<br>
-
-<h2>Wedding Date</h2>
-
-<p>25 December 2026</p>
-
-<br>
-
-<h2>Venue</h2>
-
-<p>Wedding Venue Address Here</p>
-
-</section>
-
 <footer>
-Made with ♥ for our special day
+<p>Made with Love</p>
+<h2 style="font-size:25px;margin:10px">Rahul & Manu</h2>
+Forever Starts Here ♥
 </footer>
+
+<script>
+
+const weddingDate = new Date("2026-12-30T18:00:00+05:30").getTime();
+
+function updateCountdown() {
+
+const now = new Date().getTime();
+const distance = weddingDate - now;
+
+if(distance <= 0) {
+document.querySelector(".countdown").innerHTML =
+"THE WEDDING DAY IS HERE! ❤️";
+return;
+}
+
+document.getElementById("days").innerText =
+Math.floor(distance / (1000*60*60*24));
+
+document.getElementById("hours").innerText =
+Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+
+document.getElementById("minutes").innerText =
+Math.floor((distance % (1000*60*60))/(1000*60));
+
+document.getElementById("seconds").innerText =
+Math.floor((distance % (1000*60))/1000);
+
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+function shareInvitation() {
+
+const url = window.location.href;
+const text = "You are invited to celebrate the wedding of Rahul & Manu on 30 December 2026! ❤️ ";
+
+if(navigator.share) {
+navigator.share({
+title: "Rahul & Manu Wedding",
+text: text,
+url: url
+});
+} else {
+window.open("https://wa.me/?text=" +
+encodeURIComponent(text + url));
+}
+
+}
+
+</script>
 
 </body>
 </html>
