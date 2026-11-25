@@ -3,379 +3,470 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul & Manu | Forever Begins</title>
 
-<title>Rahul & Manu | Wedding Invitation</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 
-* {
-margin:0;
-padding:0;
-box-sizing:border-box;
+:root{
+--gold:#c5a46a;
+--cream:#f9f5eb;
+--dark:#211b16;
 }
 
-html {
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
-body {
-background:#f8f5ef;
-color:#40372d;
-font-family:'Poppins',sans-serif;
+body{
+background:var(--cream);
+color:var(--dark);
+font-family:Poppins,sans-serif;
 overflow-x:hidden;
 }
 
-:root {
---gold:#b99a62;
---dark:#25221e;
---cream:#f8f5ef;
---white:#fffdf8;
-}
-
-button,a {
--webkit-tap-highlight-color:transparent;
-}
-
-.hero {
-min-height:100vh;
-position:relative;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:40px 20px;
-background:
-linear-gradient(rgba(30,25,20,.52),rgba(30,25,20,.68)),
-url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1800')
-center/cover;
-color:white;
-overflow:hidden;
-}
-
-.hero:before {
-content:"";
-position:absolute;
-inset:18px;
-border:1px solid rgba(222,190,128,.7);
+#scene{
+position:fixed;
+inset:0;
+z-index:0;
 pointer-events:none;
 }
 
-.hero-content {
+button,a{cursor:pointer}
+
+.opening{
+position:fixed;
+inset:0;
+z-index:100;
+display:flex;
+align-items:center;
+justify-content:center;
+background:radial-gradient(circle,#eee2c9,#b9a17b);
+transition:1.5s;
+perspective:1200px;
+}
+
+.opening.hide{
+opacity:0;
+visibility:hidden;
+transform:scale(1.2);
+}
+
+.envelope{
+width:min(340px,85vw);
+height:220px;
+position:relative;
+transform-style:preserve-3d;
+filter:drop-shadow(0 25px 25px #49351c55);
+}
+
+.env-body{
+position:absolute;
+inset:0;
+background:linear-gradient(135deg,#d6bd8b,#a88b56);
+clip-path:polygon(0 0,100% 0,100% 100%,0 100%);
+border:1px solid #f6e6b8;
+}
+
+.env-card{
+position:absolute;
+width:85%;
+height:170px;
+background:#fffaf0;
+left:7.5%;
+top:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+font-family:'Playfair Display',serif;
+color:#9d7843;
+transition:1.5s;
+}
+
+.env-card h2{font-size:25px}
+
+.env-flap{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:120px;
+background:linear-gradient(135deg,#f1dcad,#b18b51);
+clip-path:polygon(0 0,100% 0,50% 100%);
+transform-origin:top;
+transition:1s;
+z-index:4;
+}
+
+.envelope.open .env-flap{
+transform:rotateX(180deg);
+z-index:0;
+}
+
+.envelope.open .env-card{
+transform:translateY(-100px);
+}
+
+.seal{
+position:absolute;
+z-index:5;
+width:48px;
+height:48px;
+background:#9e2936;
+border:2px solid #e8c987;
+border-radius:50%;
+left:calc(50% - 24px);
+top:85px;
+color:#ffe9bb;
+display:grid;
+place-items:center;
+font-family:serif;
+font-size:20px;
+transition:.4s;
+}
+
+.envelope.open .seal{
+opacity:0;
+}
+
+.open-btn{
+margin-top:55px;
+padding:15px 35px;
+background:#8b6940;
+color:white;
+border:1px solid #e9d6a8;
+letter-spacing:3px;
+font-size:11px;
+}
+
+.opening-content{
+text-align:center;
+}
+
+.opening-content>p{
+font-size:11px;
+letter-spacing:5px;
+margin-bottom:40px;
+color:#755b37;
+}
+
+.hero{
+min-height:100svh;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+overflow:hidden;
+background:
+linear-gradient(#21180b55,#21180b88),
+url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1800')
+center/cover;
+color:white;
+padding:40px 20px;
+}
+
+.hero:after{
+content:"";
+position:absolute;
+inset:15px;
+border:1px solid #d8bd83;
+pointer-events:none;
+}
+
+.hero-content{
 position:relative;
 z-index:2;
-animation:opening 2s ease;
+animation:rise 2s ease;
 }
 
-@keyframes opening {
-from {opacity:0;transform:translateY(45px);}
-to {opacity:1;transform:translateY(0);}
+@keyframes rise{
+from{opacity:0;transform:translateY(70px)}
+to{opacity:1;transform:translateY(0)}
 }
 
-.subtitle {
-font-size:11px;
+.eyebrow{
+font-size:10px;
 letter-spacing:7px;
-color:#e7d2a7;
-margin-bottom:35px;
+color:#eed6a3;
+margin-bottom:30px;
 }
 
-.hero h1 {
+.hero h1{
 font-family:'Playfair Display',serif;
-font-size:clamp(65px,13vw,115px);
+font-size:clamp(65px,14vw,120px);
 font-weight:400;
-line-height:1.1;
-color:#f4e4c1;
-text-shadow:0 5px 30px #0008;
+line-height:1.05;
+color:#f6e5c0;
+text-shadow:
+1px 1px #b18b51,
+2px 2px #a47b3d,
+3px 3px #8a632c,
+4px 4px #705023,
+0 12px 30px #0009;
 }
 
-.amp {
+.amp{
 font-family:'Playfair Display',serif;
 font-size:55px;
 font-style:italic;
-color:#d5b77e;
-margin:8px;
+color:#e0bd79;
+margin:12px;
+text-shadow:0 5px 15px #000;
 }
 
-.hero-text {
+.hero-sub{
 font-family:'Playfair Display',serif;
-font-size:21px;
+font-size:20px;
 font-style:italic;
 margin:30px 0;
-color:#eee1cc;
 }
 
-.gold-line {
-height:1px;
+.gold-line{
 width:140px;
+height:1px;
 background:var(--gold);
 margin:25px auto;
 }
 
-.date {
+.hero-date{
+font-size:13px;
 letter-spacing:5px;
-font-size:15px;
-color:#f1d9a8;
+color:#f3d9a5;
 }
 
-.btn {
+.btn{
 display:inline-block;
-padding:14px 30px;
-border:1px solid var(--gold);
-background:var(--gold);
-color:#fff;
+padding:15px 30px;
+background:linear-gradient(135deg,#d9bd82,#a98448);
+color:white;
 text-decoration:none;
-font-size:11px;
-letter-spacing:2px;
+font-size:10px;
+letter-spacing:3px;
+border:1px solid #f0dbac;
 margin-top:30px;
-cursor:pointer;
 transition:.4s;
 }
 
-.btn:hover {
-background:transparent;
-color:var(--gold);
-transform:translateY(-4px);
+.btn:hover{
+transform:translateY(-5px) scale(1.04);
+box-shadow:0 12px 25px #9d784455;
 }
 
-.music {
+.music{
 position:fixed;
 right:20px;
 top:20px;
-z-index:100;
-width:46px;
-height:46px;
+z-index:50;
+width:48px;
+height:48px;
 border-radius:50%;
+background:#fffaf0;
 border:1px solid var(--gold);
-background:#fffdf0;
-color:#92733e;
-cursor:pointer;
-font-size:18px;
+color:#a17a40;
+font-size:20px;
 }
 
-section {
+section{
+position:relative;
+z-index:1;
 padding:100px 20px;
 text-align:center;
 }
 
-.section-label {
+.label{
 font-size:10px;
 letter-spacing:6px;
-color:var(--gold);
+color:#aa8954;
 margin-bottom:20px;
 }
 
-h2 {
+h2{
 font-family:'Playfair Display',serif;
 font-size:clamp(35px,7vw,55px);
 font-weight:400;
-color:#6c5740;
+color:#8d7046;
 margin-bottom:25px;
 }
 
-.description {
+.description{
 max-width:550px;
 margin:auto;
-line-height:2;
 font-size:14px;
-color:#777;
+line-height:2.1;
+color:#766e62;
 }
 
-.intro {
-background:var(--white);
-}
-
-.names {
-font-family:'Playfair Display',serif;
-font-size:clamp(40px,8vw,65px);
-color:#ad8b56;
-font-style:italic;
-margin:30px 0;
-}
-
-.details {
-background:#eee8dd;
-}
-
-.details-grid {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-max-width:850px;
-margin:45px auto 0;
-}
-
-.detail-card {
-padding:40px 20px;
+.intro{
 background:#fffdf8;
-border:1px solid #dfcfaf;
-transition:.5s;
 }
 
-.detail-card:hover {
-transform:translateY(-10px);
-box-shadow:0 15px 40px #a58d651c;
-}
-
-.icon {
-font-size:32px;
-margin-bottom:20px;
-}
-
-.detail-card h3 {
+.couple-names{
 font-family:'Playfair Display',serif;
-font-size:25px;
-font-weight:400;
-color:#9c7d4e;
-margin-bottom:12px;
+font-size:clamp(45px,9vw,75px);
+font-style:italic;
+color:#b18a4d;
+text-shadow:2px 3px 0 #e8d5ae,4px 6px 10px #ad8b5744;
+margin:35px 0;
 }
 
-.countdown {
-background:#29251f;
+.countdown{
+background:linear-gradient(135deg,#27221c,#45372a);
 color:white;
 }
 
-.countdown h2 {
-color:#e7d3ad;
-}
+.countdown h2{color:#f1dfb8}
 
-.timer {
+.timer{
 display:flex;
 justify-content:center;
+gap:12px;
 flex-wrap:wrap;
-gap:15px;
-margin-top:45px;
+margin-top:40px;
 }
 
-.timer-box {
-min-width:90px;
-padding:20px 10px;
-border:1px solid #a88b5a;
+.timer-box{
+min-width:78px;
+padding:20px 12px;
+border:1px solid #c7a66d;
+background:linear-gradient(145deg,#ffffff12,#00000020);
+box-shadow:inset 0 0 20px #ffffff08,0 8px 20px #0003;
+transform:perspective(400px) rotateX(5deg);
 }
 
-.timer-box strong {
+.timer-box strong{
 display:block;
 font-family:'Playfair Display',serif;
-font-size:38px;
-font-weight:400;
-color:#e9d1a0;
+font-size:35px;
+color:#f1d49c;
 }
 
-.timer-box span {
+.timer-box span{
 font-size:9px;
-letter-spacing:3px;
-color:#cbb58c;
+letter-spacing:2px;
+color:#d5bc91;
 }
 
-.gallery {
+.details{
+background:#f0e9dc;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+max-width:850px;
+margin:45px auto;
+}
+
+.card{
+background:#fffdf8;
+border:1px solid #d9c7a4;
+padding:40px 20px;
+transition:.5s;
+box-shadow:0 12px 25px #6c56321c;
+}
+
+.card:hover{
+transform:perspective(800px) rotateY(8deg) translateY(-10px);
+box-shadow:0 25px 40px #6c563233;
+}
+
+.card .icon{font-size:35px;margin-bottom:20px}
+
+.card h3{
+font-family:'Playfair Display',serif;
+font-size:25px;
+color:#9c7d4e;
+margin-bottom:10px;
+}
+
+.gallery{
 background:#fffdf8;
 }
 
-.gallery-grid {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:15px;
-max-width:950px;
+.gallery-grid{
+max-width:1000px;
 margin:40px auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
 
-.gallery-grid img {
+.gallery-grid img{
 width:100%;
-height:310px;
+height:300px;
 object-fit:cover;
+box-shadow:0 15px 30px #0002;
 transition:.6s;
 }
 
-.gallery-grid img:hover {
-transform:scale(1.03);
+.gallery-grid img:hover{
+transform:scale(1.04) rotateY(5deg);
+box-shadow:0 25px 40px #0003;
 }
 
-.location {
-background:#eee8dd;
+.location{
+background:#f0e9dc;
 }
 
-.footer {
-background:#26221e;
-color:#e8d5b0;
-padding:70px 20px;
-text-align:center;
+.footer{
+background:#24201b;
+color:#f0d9ae;
+padding:75px 20px;
 }
 
-.footer h2 {
-color:#e8d5b0;
-font-size:42px;
-}
+.footer h2{color:#f0d9ae}
 
-.footer p {
-font-size:12px;
-letter-spacing:3px;
-margin-top:15px;
-}
-
-.reveal {
+.reveal{
 opacity:0;
-transform:translateY(35px);
-transition:1s;
+transform:translateY(45px);
+transition:1.2s;
 }
 
-.reveal.active {
+.reveal.active{
 opacity:1;
 transform:translateY(0);
 }
 
-.petals {
-position:fixed;
-top:-30px;
-z-index:5;
-pointer-events:none;
-animation:fall linear forwards;
+@media(max-width:600px){
+.hero{min-height:100svh}
+section{padding:75px 18px}
+.timer-box{min-width:68px;padding:14px 7px}
+.timer-box strong{font-size:27px}
+.eyebrow{letter-spacing:4px}
 }
-
-@keyframes fall {
-0% {
-transform:translateY(-10vh) rotate(0deg);
-opacity:0;
-}
-10% {opacity:.9;}
-100% {
-transform:translateY(110vh) rotate(600deg);
-opacity:0;
-}
-}
-
-@media(max-width:600px) {
-
-.hero {
-min-height:100svh;
-}
-
-section {
-padding:75px 18px;
-}
-
-.gallery-grid img {
-height:260px;
-}
-
-.timer-box {
-min-width:72px;
-padding:15px 7px;
-}
-
-.timer-box strong {
-font-size:29px;
-}
-
-.subtitle {
-letter-spacing:4px;
-}
-
-}
-
 </style>
 </head>
 
 <body>
+
+<canvas id="scene"></canvas>
+
+<!-- OPENING ENVELOPE -->
+
+<div class="opening" id="opening">
+<div class="opening-content">
+
+<p>YOU ARE CORDIALLY INVITED</p>
+
+<div class="envelope" id="envelope">
+<div class="env-card">
+<p>THE WEDDING OF</p>
+<h2>Rahul & Manu</h2>
+</div>
+<div class="env-body"></div>
+<div class="env-flap"></div>
+<div class="seal">R♥M</div>
+</div>
+
+<button class="open-btn" onclick="openInvitation()">
+OPEN YOUR INVITATION
+</button>
+
+</div>
+</div>
 
 <button class="music" onclick="toggleMusic()" id="musicBtn">♫</button>
 
@@ -385,54 +476,48 @@ letter-spacing:4px;
 
 <div class="hero-content">
 
-<div class="subtitle">THE WEDDING CELEBRATION</div>
+<div class="eyebrow">THE BEGINNING OF FOREVER</div>
 
 <p>Together with our families</p>
 
 <div class="gold-line"></div>
 
 <h1>Rahul</h1>
-
 <div class="amp">&</div>
-
 <h1>Manu</h1>
 
-<p class="hero-text">
-Two Souls, One Beautiful Journey
-</p>
+<p class="hero-sub">Two Souls. One Beautiful Journey.</p>
 
 <div class="gold-line"></div>
 
-<p class="date">30 DECEMBER 2026</p>
+<p class="hero-date">30 DECEMBER 2026</p>
 
 <a href="#invitation" class="btn">EXPLORE INVITATION</a>
 
 </div>
-
 </header>
 
 <!-- INVITATION -->
 
 <section class="intro reveal" id="invitation">
 
-<div class="section-label">A BEAUTIFUL BEGINNING</div>
+<div class="label">A BEAUTIFUL BEGINNING</div>
 
 <h2>With Love & Blessings</h2>
 
 <p class="description">
-Some journeys are meant to be shared forever.
-With the blessings of our families,
+Together with our beloved families,
 we invite you to celebrate the beginning
 of our beautiful journey together.
+Your presence will make this day unforgettable.
 </p>
 
-<div class="names">
-Rahul <br>&<br> Manu
+<div class="couple-names">
+Rahul<br>&<br>Manu
 </div>
 
 <p class="description">
-Your presence will make our celebration
-even more special.
+A new chapter. A lifetime of memories.
 </p>
 
 </section>
@@ -441,13 +526,9 @@ even more special.
 
 <section class="countdown reveal">
 
-<div class="section-label">THE BIG DAY IS COMING</div>
+<div class="label">COUNTING DOWN TO FOREVER</div>
 
-<h2>Counting Down To Forever</h2>
-
-<p style="color:#c5b89f">
-30 December 2026
-</p>
+<h2>Our Special Day</h2>
 
 <div class="timer">
 
@@ -479,25 +560,25 @@ even more special.
 
 <section class="details reveal">
 
-<div class="section-label">JOIN OUR CELEBRATION</div>
+<div class="label">SAVE THE DATE</div>
 
 <h2>Wedding Details</h2>
 
-<div class="details-grid">
+<div class="cards">
 
-<div class="detail-card">
+<div class="card">
 <div class="icon">💍</div>
 <h3>The Couple</h3>
 <p>Rahul & Manu</p>
 </div>
 
-<div class="detail-card">
+<div class="card">
 <div class="icon">📅</div>
 <h3>The Date</h3>
 <p>30 December 2026</p>
 </div>
 
-<div class="detail-card">
+<div class="card">
 <div class="icon">📍</div>
 <h3>The Location</h3>
 <p>Kanpur, Uttar Pradesh</p>
@@ -511,17 +592,17 @@ even more special.
 
 <section class="gallery reveal">
 
-<div class="section-label">BEAUTIFUL MOMENTS</div>
+<div class="label">MOMENTS OF LOVE</div>
 
 <h2>Wedding Inspiration</h2>
 
 <p class="description">
-A celebration of love, happiness and togetherness.
+A celebration filled with love, beauty and happiness.
 </p>
 
 <div class="gallery-grid">
 
-<img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=700" alt="Wedding decoration">
+<img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=700" alt="Wedding decor">
 
 <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=700" alt="Wedding celebration">
 
@@ -535,13 +616,13 @@ A celebration of love, happiness and togetherness.
 
 <section class="location reveal">
 
-<div class="section-label">CELEBRATE WITH US</div>
+<div class="label">JOIN OUR CELEBRATION</div>
 
 <h2>Find Our Location</h2>
 
 <p class="description">
-We look forward to celebrating this special day
-with you in Kanpur, Uttar Pradesh.
+We look forward to celebrating with you
+in Kanpur, Uttar Pradesh.
 </p>
 
 <a class="btn"
@@ -556,12 +637,12 @@ OPEN GOOGLE MAPS
 
 <section class="intro reveal">
 
-<div class="section-label">SPREAD THE HAPPINESS</div>
+<div class="label">SPREAD THE HAPPINESS</div>
 
 <h2>Share The Love</h2>
 
 <p class="description">
-Share this beautiful invitation with your family and friends.
+Share our special invitation with family and friends.
 </p>
 
 <button class="btn" onclick="shareInvite()">
@@ -571,170 +652,274 @@ SHARE INVITATION ♥
 </section>
 
 <footer class="footer">
-
 <h2>Rahul & Manu</h2>
-
 <div class="gold-line"></div>
-
-<p>MADE WITH LOVE</p>
-
 <p>FOREVER STARTS HERE ♥</p>
-
+<p style="margin-top:15px;font-size:10px">30 DECEMBER 2026 · KANPUR</p>
 </footer>
 
 <script>
 
-// WEDDING COUNTDOWN
+// OPENING ANIMATION
 
-const weddingDate = new Date(
-"2026-12-30T18:00:00+05:30"
-).getTime();
+function openInvitation(){
 
-function countdown() {
+document.getElementById("envelope").classList.add("open");
+
+setTimeout(()=>{
+document.getElementById("opening").classList.add("hide");
+},1200);
+
+}
+
+// COUNTDOWN
+
+const weddingDate = new Date("2026-12-30T18:00:00+05:30").getTime();
+
+function updateCountdown(){
 
 const now = Date.now();
-const distance = weddingDate - now;
+const distance = weddingDate-now;
 
-if(distance <= 0) {
-
-document.querySelector(".timer").innerHTML =
-"<h2 style='color:#e9d1a0'>THE BIG DAY IS HERE! ❤️</h2>";
-
+if(distance<=0){
+document.querySelector(".timer").innerHTML=
+"<h2>THE BIG DAY IS HERE! ❤️</h2>";
 return;
 }
 
-document.getElementById("days").innerText =
-Math.floor(distance / 86400000);
+document.getElementById("days").textContent=
+Math.floor(distance/86400000);
 
-document.getElementById("hours").innerText =
-Math.floor((distance % 86400000) / 3600000);
+document.getElementById("hours").textContent=
+Math.floor(distance%86400000/3600000);
 
-document.getElementById("minutes").innerText =
-Math.floor((distance % 3600000) / 60000);
+document.getElementById("minutes").textContent=
+Math.floor(distance%3600000/60000);
 
-document.getElementById("seconds").innerText =
-Math.floor((distance % 60000) / 1000);
+document.getElementById("seconds").textContent=
+Math.floor(distance%60000/1000);
 
 }
 
-countdown();
-setInterval(countdown,1000);
+updateCountdown();
+setInterval(updateCountdown,1000);
 
+// SCROLL REVEAL
 
-// SCROLL ANIMATIONS
-
-const observer = new IntersectionObserver(entries => {
-
-entries.forEach(entry => {
-
-if(entry.isIntersecting) {
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
 entry.target.classList.add("active");
 }
-
 });
+},{threshold:.12});
 
-},{threshold:0.12});
-
-document.querySelectorAll(".reveal").forEach(el => {
+document.querySelectorAll(".reveal").forEach(el=>{
 observer.observe(el);
 });
 
+// THREE.JS 3D PARTICLES
+
+const script=document.createElement("script");
+
+script.src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+
+script.onload=function(){
+
+const canvas=document.getElementById("scene");
+
+const scene=new THREE.Scene();
+
+const camera=new THREE.PerspectiveCamera(
+65,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
+);
+
+camera.position.z=65;
+
+const renderer=new THREE.WebGLRenderer({
+canvas:canvas,
+alpha:true,
+antialias:true
+});
+
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+renderer.setSize(window.innerWidth,window.innerHeight);
+
+const geometry=new THREE.BufferGeometry();
+
+const count=window.innerWidth<600?450:900;
+
+const positions=new Float32Array(count*3);
+
+for(let i=0;i<count;i++){
+
+positions[i*3]=(Math.random()-.5)*120;
+positions[i*3+1]=(Math.random()-.5)*100;
+positions[i*3+2]=(Math.random()-.5)*80;
+
+}
+
+geometry.setAttribute(
+"position",
+new THREE.BufferAttribute(positions,3)
+);
+
+const material=new THREE.PointsMaterial({
+color:0xc5a46a,
+size:0.17,
+transparent:true,
+opacity:.8,
+blending:THREE.AdditiveBlending
+});
+
+const particles=new THREE.Points(geometry,material);
+
+scene.add(particles);
+
+let mouseX=0;
+let mouseY=0;
+
+window.addEventListener("pointermove",e=>{
+mouseX=(e.clientX/window.innerWidth-.5)*2;
+mouseY=(e.clientY/window.innerHeight-.5)*2;
+});
+
+function animate(){
+
+requestAnimationFrame(animate);
+
+particles.rotation.y+=.0007;
+particles.rotation.x+=.0003;
+
+camera.position.x+=(mouseX*2-camera.position.x)*.02;
+camera.position.y+=(-mouseY*2-camera.position.y)*.02;
+
+renderer.render(scene,camera);
+
+}
+
+animate();
+
+window.addEventListener("resize",()=>{
+
+camera.aspect=window.innerWidth/window.innerHeight;
+camera.updateProjectionMatrix();
+
+renderer.setSize(window.innerWidth,window.innerHeight);
+
+});
+
+};
+
+document.head.appendChild(script);
 
 // ROSE PETALS
 
-function createPetal() {
+function createPetal(){
 
-const petal = document.createElement("div");
+const petal=document.createElement("div");
 
-petal.className = "petals";
-petal.innerHTML = Math.random() > 0.5 ? "🌸" : "🌹";
+petal.textContent=Math.random()>.5?"🌸":"🌹";
 
-petal.style.left = Math.random()*100+"vw";
-petal.style.fontSize = (12+Math.random()*15)+"px";
-petal.style.animationDuration = (6+Math.random()*7)+"s";
+petal.style.position="fixed";
+petal.style.zIndex="4";
+petal.style.pointerEvents="none";
+petal.style.left=Math.random()*100+"vw";
+petal.style.top="-30px";
+petal.style.fontSize=(12+Math.random()*15)+"px";
+
+const duration=7+Math.random()*7;
+
+petal.animate([
+{transform:"translate3d(0,0,0) rotate(0deg)",opacity:0},
+{opacity:1,offset:.15},
+{transform:"translate3d(60px,110vh,0) rotate(650deg)",opacity:0}
+],{
+duration:duration*1000,
+easing:"linear"
+});
 
 document.body.appendChild(petal);
 
-setTimeout(()=>petal.remove(),14000);
+setTimeout(()=>petal.remove(),duration*1000);
 
 }
 
-setInterval(createPetal,800);
+setInterval(createPetal,1000);
 
-
-// BACKGROUND SOUND
+// BACKGROUND INSTRUMENTAL SOUND
 
 let audioContext;
 let musicTimer;
-let musicPlaying = false;
+let playing=false;
 
-function toggleMusic() {
+function toggleMusic(){
 
-const button = document.getElementById("musicBtn");
+const button=document.getElementById("musicBtn");
 
-if(!audioContext) {
-audioContext = new (window.AudioContext || window.webkitAudioContext)();
+if(!audioContext){
+audioContext=new(window.AudioContext||window.webkitAudioContext)();
 }
 
-if(audioContext.state === "suspended") {
 audioContext.resume();
-}
 
-musicPlaying = !musicPlaying;
+playing=!playing;
 
-button.innerHTML = musicPlaying ? "♪" : "♫";
+button.textContent=playing?"♪":"♫";
 
-if(musicPlaying) {
-playMusic();
-} else {
+if(playing){
+playNotes();
+}else{
 clearInterval(musicTimer);
 }
 
 }
 
-function playMusic() {
+function playNotes(){
 
-const notes = [261.63,329.63,392,329.63,293.66,349.23,392,349.23];
+const notes=[261.63,329.63,392,329.63,293.66,349.23,440,349.23];
 
-let i = 0;
+let index=0;
 
-function playNote() {
+function note(){
 
-if(!musicPlaying) return;
+if(!playing)return;
 
-const oscillator = audioContext.createOscillator();
-const gain = audioContext.createGain();
+const osc=audioContext.createOscillator();
+const gain=audioContext.createGain();
 
-oscillator.type = "sine";
-oscillator.frequency.value = notes[i % notes.length];
+osc.type="sine";
+osc.frequency.value=notes[index%notes.length];
 
-gain.gain.setValueAtTime(0.0001,audioContext.currentTime);
-gain.gain.exponentialRampToValueAtTime(0.035,audioContext.currentTime+0.1);
-gain.gain.exponentialRampToValueAtTime(0.0001,audioContext.currentTime+1.5);
+gain.gain.setValueAtTime(.0001,audioContext.currentTime);
+gain.gain.exponentialRampToValueAtTime(.025,audioContext.currentTime+.15);
+gain.gain.exponentialRampToValueAtTime(.0001,audioContext.currentTime+1.5);
 
-oscillator.connect(gain);
+osc.connect(gain);
 gain.connect(audioContext.destination);
 
-oscillator.start();
-oscillator.stop(audioContext.currentTime+1.5);
+osc.start();
+osc.stop(audioContext.currentTime+1.5);
 
-i++;
-
-}
-
-playNote();
-musicTimer = setInterval(playNote,1500);
+index++;
 
 }
 
+note();
+
+musicTimer=setInterval(note,1500);
+
+}
 
 // WHATSAPP SHARE
 
-function shareInvite() {
+function shareInvite(){
 
-const message =
-"You're invited! ❤️ Rahul & Manu Wedding | 30 December 2026 | Kanpur. View our invitation: "
-+window.location.href;
+const message=
+"Rahul & Manu Wedding Invitation ❤️ 30 December 2026, Kanpur. Join our celebration: "+location.href;
 
 window.open(
 "https://wa.me/?text="+encodeURIComponent(message),
